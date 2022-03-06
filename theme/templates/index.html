@@ -9,7 +9,7 @@ EventCalendar
         <div class="w-full fixed top-0 z-40">
             <div class="bg-gray-700 flex justify-between py-4 h-auto p-2 shadow-gray-600 shadow-md md:py-6">
                 <div class="transform hover:scale-105">
-                    <a class="text-white text-lg md:ml-32 md:text-2xl font-bold" href="index.html">Event Calendar</a>
+                    <a class="text-white text-lg md:ml-32 md:text-2xl font-bold" href="/">Event Calendar</a>
                 </div>
                 <nav class="">
                     <svg id="burger" xmlns="http://www.w3.org/2000/svg"
@@ -121,13 +121,14 @@ EventCalendar
                     <!-- titles -->
                     <div class="flex mt-16 px-8 md:mx-72">
                         <div class="text-gray-700 text-2xl font-bold md:text-4xl">
-                            <label for="">Day</label>
+                            <label for="">{{t}}</label>
                         </div>
                         <div class="text-gray-700 text-2xl font-bold md:text-4xl md:ml-32 ml-14">
                             <label for="">Event</label>
                         </div>
                     </div>
                     <!-- each events -->
+                    {% for i in events %}
                     <div>
                         <br>
                         <div class="border-t-2 border-gray-700 mx-6 opacity-30 md:mx-72"></div>
@@ -139,7 +140,7 @@ EventCalendar
                                     <div
                                         class="flex items-center justify-center w-20 h-32 text-4xl font-bold text-white bg-gray-700 md:w-28 border-2 border-gray-700 rounded-lg">
                                         <!-- day 1 -->
-                                        <label for="">1</label>
+                                        <label for="">{{i.day}}</label>
 
                                     </div>
                                 </div>
@@ -147,7 +148,7 @@ EventCalendar
                                     <!-- Event 1 -->
                                     <div
                                         class="bg-gray-700 border-gray-700 border-2 rounded-lg p-4 font-bold text-white text-xl h-32 flex items-center">
-                                        <a href="">International seminar on post covid diseases and treatment</a>
+                                        <a href="">{{i.name}}</a>
                                     </div>
                                 </div>
 
@@ -156,45 +157,17 @@ EventCalendar
 
                         </div>
                     </div>
-                    <!-- each events -->
-                    <div>
-                        <br>
-                        <div class="border-t-2 border-gray-700 mx-6 opacity-30 md:mx-72"></div>
-
-                        <div class="flex mt-2 px-8 md:mx-72">
-                            <!-- calendar body -->
-                            <div id="row1" class="flex w-full gap-3 md:gap-20">
-                                <div class="">
-                                    <div
-                                        class="flex items-center justify-center w-20 h-32 text-4xl font-bold text-white bg-gray-700 md:w-28 border-2 border-gray-700 rounded-lg">
-                                        <!-- day 1 -->
-                                        <label for="">15</label>
-
-                                    </div>
-                                </div>
-                                <div class="w-full">
-                                    <!-- Event 1 -->
-                                    <div
-                                        class="bg-gray-700 border-gray-700 border-2 rounded-lg p-4 font-bold text-white text-xl h-32 flex items-center">
-                                        <a href="">Sports day</a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
+                    {% endfor %}
 
 
                 </form>
 
             </div><!-- end of monthly view-->
 
-            <div class="pt-10 pl-10 pr-10 h-full w-full md:px-56 hidden" id="dai-view">
+            <div class="mt-4 pt-12 pl-10 pr-10 h-full w-full md:px-56 lg:px-96 hidden" id="dai-view">
                 <!--Daily view-->
                 <form action="">
-                    <div class="bg-gray-700 text-white rounded-lg pb-2">
+                    <div class="bg-gray-700 text-white rounded-lg pb-2 lg:p-8 lg:rounded-2xl">
                         <div class="flex justify-center gap-3 pt-3 font-semibold text-lg md:text-2xl">
                             <div>
                                 <label for="" id="dv-day"></label>
@@ -206,33 +179,28 @@ EventCalendar
                                 <label for="" id="dv-year"></label>
                             </div>
                         </div>
+                        {% for j in events %}
                         <!--content-->
+                        {% if j.day is d and j.month is m and j.year is y %}
                         <div class="p-8 m-5 border-2 border-white rounded-lg">
-                            <div><label for="">Event Name</label></div>
-                            <div class="mt-3 text-sm"><label for="">Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Illum, repellat?</label></div>
-                            <div class="mt-3"><label for="">Venue</label></div>
-                            <div class="mt-3"><label for="">Time</label></div>
+                            <div><label for="">{{j.name}}</label></div>
+                            <div class="mt-3 text-sm"><label for="">{{j.decs}}</label></div>
+                            <div class="mt-3"><label for="">{{j.venue}}</label></div>
+                            <div class="mt-3"><label for="">{{j.time}}</label></div>
                         </div>
-                        <div class="p-8 m-5 border-2 border-white rounded-lg">
-                            <div><label for="">Event Title</label></div>
-                            <div class="mt-3 text-sm"><label for="">Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Illum, repellat?</label></div>
-                            <div class="mt-3"><label for="">Venue</label></div>
-                            <div class="mt-3"><label for="">Time</label></div>
-                        </div>
-                        <div class="p-8 m-5 border-2 border-white rounded-lg">
-                            <div><label for="">Event Title</label></div>
-                            <div class="mt-3 text-sm"><label for="">Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Illum, repellat?</label></div>
-                            <div class="mt-3"><label for="">Venue</label></div>
-                            <div class="mt-3"><label for="">Time</label></div>
-                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </form>
             </div>
             <!-- upcoming -->
-            <div class="hidden" id="upcoming">
+            <div class="hidden mt-12 px-12 sm:px-40 md:px-64 lg:px-96" id="upcoming">
+                {% for k in events %}
+                <div class="bg-gray-700 text-white p-3 hp rounded-lg w-full text-center mt-6 lg:rounded-2xl">
+                    <a href="" class=" font-bold text-lg">{{k.date}}</a><br>
+                    <a href="">{{k.name}}</a>
+                </div>
+                {% endfor %}
             </div>
 
         </div>
