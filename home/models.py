@@ -10,5 +10,5 @@ class event(models.Model):
     year=models.PositiveIntegerField()
     venue=models.CharField(max_length=50)
     time=models.CharField(max_length=10)
-    date=models.CharField(max_length=20)
+    date=models.DateField()
     weblink=models.CharField(max_length=100)

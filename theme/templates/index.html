@@ -18,7 +18,7 @@ EventCalendar
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <div id="menu" class="text-white hidden md:block">
+                    <div id="menu" class="text-white hidden md:block font-bold">
                         <ul class="md:flex md:gap-3 md:mr-32 md:text-lg">
                             <li>
                                 <div class="transform hover:scale-110"><a href="/">Home</a></div>
@@ -34,26 +34,30 @@ EventCalendar
                 </nav>
             </div>
         </div>
-        <div class="flex gap-3 justify-center mt-40 px-4 md:mx-36 ">
+        <div class="flex gap-2 sm:gap-3 justify-center mt-40 px-4 mx-2 md:mx-36 ">
             <!--view buttons -->
+            <div class="md:p-4 p-2 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700 text-md text-white w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-white hover:text-gray-700"
+                onclick="allClick()">
+                <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">All Events</h1>
+            </div>
 
-            <div class="md:p-4 p-3 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700  text-lg text-white w-28 md:w-1/3 text-center  md:h-20 hover:cursor-pointer hover:bg-white hover:text-gray-700"
+            <div class="md:p-4 p-2 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700  text-md text-white w-24 md:w-1/4 text-center  md:h-24 hover:cursor-pointer hover:bg-white hover:text-gray-700"
                 onclick="upcomingView()">
-                <h1 class="lg:text-2xl md:mt-1">Upcoming Events</h1>
+                <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">Upcoming Events</h1>
             </div>
-            <div class="md:p-4 p-3 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700  text-lg text-white w-28 md:w-1/3 text-center md:h-20 hover:cursor-pointer hover:bg-white hover:text-gray-700"
+            <div class="md:p-4 p-2 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700  text-md text-white w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-white hover:text-gray-700"
                 onclick="monthClick()">
-                <h1 class="lg:text-2xl md:mt-1">Monthly View</h1>
+                <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">Monthly View</h1>
             </div>
-            <div class="md:p-4 p-3 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700 text-lg text-white w-28 md:w-1/3 text-center md:h-20 hover:cursor-pointer hover:bg-white hover:text-gray-700"
+            <div class="md:p-4 p-2 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700 text-md text-white w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-white hover:text-gray-700"
                 onclick="dailyClick()">
-                <h1 class="lg:text-2xl md:mt-1">Today's Events</h1>
+                <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">Today's Events</h1>
             </div>
         </div>
         <div>
             <!-- calendar section -->
 
-            <div class="" id="mon-view">
+            <div class="hidden" id="mon-view">
                 <!-- Monthly view -->
                 <form action="">
                     <!-- year -->
@@ -72,7 +76,7 @@ EventCalendar
                         </div>
 
                         <input
-                            class="bg-gray-700 text-white w-36 h-10 border-2 border-gray-700 rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl"
+                            class="bg-gray-700 text-white w-36 h-10 border-2 border-gray-700 rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl font-bold"
                             type="text" id="year">
 
                         <!-- Next -->
@@ -102,7 +106,7 @@ EventCalendar
                         <div class="">
                             <!-- Month -->
                             <input type="text" id="month"
-                                class="text-center bg-gray-700 pointer-events-none border-2 border-gray-700 text-white text-lg rounded-lg h-10 w-36 md:w-60 md:h-16 md:text-2xl">
+                                class="text-center bg-gray-700 pointer-events-none border-2 border-gray-700 text-white text-lg rounded-lg h-10 w-36 md:w-60 md:h-16 md:text-2xl font-bold">
                         </div>
                         <div onclick="next_month()"
                             class="w-auto px-2 trans border-2 border-gray-700 bg-gray-700 text-white hover:bg-white hover:text-gray-700 rounded-lg text-center hover:cursor-pointer md:h-16 md:w-20">
@@ -121,7 +125,7 @@ EventCalendar
                     <!-- titles -->
                     <div class="flex mt-16 px-8 md:mx-72">
                         <div class="text-gray-700 text-2xl font-bold md:text-4xl">
-                            <label for="">{{t}}</label>
+                            <label for="">Day</label>
                         </div>
                         <div class="text-gray-700 text-2xl font-bold md:text-4xl md:ml-32 ml-14">
                             <label for="">Event</label>
@@ -148,7 +152,7 @@ EventCalendar
                                     <!-- Event 1 -->
                                     <div
                                         class="bg-gray-700 border-gray-700 border-2 rounded-lg p-4 font-bold text-white text-xl h-32 flex items-center">
-                                        <a href="">{{i.name}}</a>
+                                        <a href="eventdetails/{{i.id}}">{{i.name}}</a>
                                     </div>
                                 </div>
 
@@ -168,26 +172,28 @@ EventCalendar
                 <!--Daily view-->
                 <form action="">
                     <div class="bg-gray-700 text-white rounded-lg pb-2 lg:p-8 lg:rounded-2xl">
-                        <div class="flex justify-center gap-3 pt-3 font-semibold text-lg md:text-2xl">
+                        
+                        <div class="flex justify-center gap-3 p-3 font-semibold text-lg md:text-2xl">
                             <div>
-                                <label for="" id="dv-day"></label>
-                            </div>
-                            <div>
-                                <label for="" id="dv-month"></label>
-                            </div>
-                            <div>
-                                <label for="" id="dv-year"></label>
+                                <label for="" class="text-xl md:text-3xl">{{ft}}</label>
                             </div>
                         </div>
+                    </div>
                         {% for j in events %}
                         <!--content-->
-                        {% if j.day is d and j.month is m and j.year is y %}
+                        {% if j.date == t %}
+                        <div class="bg-gray-700 text-white rounded-lg p-4 lg:p-8 lg:rounded-2xl mt-3">
                         <div class="p-8 m-5 border-2 border-white rounded-lg">
-                            <div><label for="">{{j.name}}</label></div>
-                            <div class="mt-3 text-sm"><label for="">{{j.decs}}</label></div>
-                            <div class="mt-3"><label for="">{{j.venue}}</label></div>
-                            <div class="mt-3"><label for="">{{j.time}}</label></div>
+                            <div class="text-center"><label for="" class="font-bold text-lg md:text-2xl">{{j.name}}</label></div>
+                            <br>
+                            <div class="">
+                            <div class="mt-3"><label for="" class="text-lg md:text-xl">{{j.decs}}</label></div>
+                            <div class="mt-3"><label for="" class="text-lg md:text-xl">Venue : {{j.venue}}</label></div>
+                            <div class="mt-3"><label for="" class="text-lg md:text-xl">Time : {{j.time}}</label></div>
+                            </div>
+                              <div class="mt-6 text-center w-full"><a href="{{j.weblink}}" class=""><div class="bg-gray-700 text-white border-2 border-white rounded-lg hover:bg-white hover:text-gray-700 trans hover:border-gray-700 text-xl h-12 p-2">Register</div></a></div>
                         </div>
+                    </div>
                         {% endif %}
                         {% endfor %}
                     </div>
@@ -196,10 +202,36 @@ EventCalendar
             <!-- upcoming -->
             <div class="hidden mt-12 px-12 sm:px-40 md:px-64 lg:px-96" id="upcoming">
                 {% for k in events %}
-                <div class="bg-gray-700 text-white p-3 hp rounded-lg w-full text-center mt-6 lg:rounded-2xl">
-                    <a href="" class=" font-bold text-lg">{{k.date}}</a><br>
-                    <a href="">{{k.name}}</a>
+                {% if k.date > t %}
+                <a href="eventdetails/{{k.id}}"><div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
+                    <label class=" font-bold text-lg hp">{{k.date}}</label><br><br>
+                    <label class=" font-semibold text-lg hp">{{k.name}}</label>
                 </div>
+            </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- allview -->
+            <div class="mt-12 px-12 sm:px-40 md:px-64 lg:px-96 " id="all-view">
+                <div class="grid place-content-center"> <div class="bg-gray-700 text-white rounded-lg p-3 hp border-2 border-gray-700 hover:bg-white hover:text-gray-700 trans text-center font-semibold text-lg w-full px-10" id="fil" onclick="filter()">Filter</div></div><br>
+                <div class="hidden text-center" id="form">
+                    <form action="filter" method="post">
+                        {% csrf_token %}
+                        <label for="" class="text-lg text-gray-700 font-semibold">From</label><br>
+                        <input type="date" placeholder="enter date" class="border-2 border-gray-700 rounded-lg mt-2" name="start"><br><br>
+                        <label for="" class="text-lg text-gray-700 font-semibold"> To</label><br>
+                        <input type="date" placeholder="enter date" class="border-2 border-gray-700 rounded-lg mt-2" name="end"><br>
+                        <input type="submit" value="Submit" class="border-2 border-gray-700 rounded-lg mt-2 bg-gray-700 text-white p-2 hp hover:bg-white hover:text-gray-700 trans">
+                    </form>
+                </div>
+                <br>
+                {% for a in events %}
+                <a href="eventdetails/{{a.id}}"><div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
+                    <label class=" font-bold text-lg hp">{{a.date}}</label><br><br>
+                    <label class=" font-semibold text-lg hp">{{a.name}}</label>
+                </div>
+            </a>
                 {% endfor %}
             </div>
 
@@ -264,8 +296,7 @@ EventCalendar
             </div>
 
             <div class="text-center opacity-50">
-                <label for="">Copyright © <span><input type="text" id="cpyear"
-                    class="bg-gray-700 pointer-events-none w-16 border-none"></span> All rights reserved</label>
+                <label for="">Copyright © <span>{{y}}</span> All rights reserved</label>
             </div>
 
         </div>

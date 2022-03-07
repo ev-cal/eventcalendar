@@ -1,4 +1,5 @@
 {% load static tailwind_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,8 +180,7 @@
             </div> 
 
             <div class="text-center opacity-50">
-                <label for="">Copyright © <span><input type="text" id="cpyear"
-                    class="bg-gray-700 pointer-events-none w-16 border-none"></span> All rights reserved</label>
+                <label for="">Copyright © <span>{{y}}</span> All rights reserved</label>
             </div>
 
 
