@@ -9,7 +9,6 @@ def main(request):
     day=tod.day
     month=tod.month
     year=tod.year
-    print(tod)
     return render(request,"index.html",{'events':obj,'d':day,'m':month,'y':year,'t':tod,'ft':formattedtod})
 def about(request):
     tod=datetime.date.today()
@@ -22,3 +21,14 @@ def feedback(request):
 def eventdetails(request,eventid):
     obj=event.objects.get(id=eventid)
     return render(request,"events.html",{'dts':obj})
+def filter(request):
+    obj=event.objects.order_by('year','month','day')
+    tod=datetime.date.today()
+    if request.method=='POST':
+        start=request.POST['start']
+        end=request.POST['end']
+        fs=datetime.datetime.strptime(start, "%Y-%m-%d").date()
+        fe=datetime.datetime.strptime(end, "%Y-%m-%d").date()
+    return render(request,"allevents.html",{'all':obj,'fs':fs,'fe':fe})
+
+

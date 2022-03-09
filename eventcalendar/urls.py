@@ -22,5 +22,6 @@ urlpatterns = [
     path('',views.main,name="main"),
     path('about',views.about,name="about"),
     path('feedback',views.feedback,name="feedback"),
-    path('eventdetails/<int:eventid>',views.eventdetails,name="eventdetails")
+    path('eventdetails/<int:eventid>',views.eventdetails,name="eventdetails"),
+    path('filter',views.filter,name="filter")
 ]
