@@ -57,9 +57,10 @@ EventCalendar
         <div>
             <!-- calendar section -->
 
-            <div class="hidden" id="mon-view">
+            <div class="" id="mon-view">
                 <!-- Monthly view -->
-                <form action="">
+                <form action="{% url 'main' %}" method="post">
+                    {% csrf_token %}
                     <!-- year -->
                     <div class="mt-14 flex justify-center gap-1">
 
@@ -75,12 +76,12 @@ EventCalendar
 
                         </div>
 
-                        <input
+                        <input value="{{fy}}"
                             class="bg-gray-700 text-white w-36 h-10 border-2 border-gray-700 rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl font-bold"
-                            type="text" id="year">
+                            type="number" id="year" name="year_input">
 
                         <!-- Next -->
-                        <div onclick="next_year()"
+                        <div onclick="next_year()" 
                             class="w-auto px-2 trans border-2 border-gray-700 bg-gray-700 text-white hover:bg-white hover:text-gray-700 rounded-lg text-center hover:cursor-pointer md:h-16 md:w-20">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-10 md:w-10 md:my-2 md:mx-2"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,7 +106,7 @@ EventCalendar
                         </div>
                         <div class="">
                             <!-- Month -->
-                            <input type="text" id="month"
+                            <input type="text" id="month" name="month_input" value="{{fm}}"
                                 class="text-center bg-gray-700 pointer-events-none border-2 border-gray-700 text-white text-lg rounded-lg h-10 w-36 md:w-60 md:h-16 md:text-2xl font-bold">
                         </div>
                         <div onclick="next_month()"
@@ -117,8 +118,12 @@ EventCalendar
                                     d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                             </svg>
                         </div>
+                   
 
+                    </div>
 
+                    <div class="flex mt-8 justify-center md:mx-36 gap-1">
+                        <input type="submit" value="View" class="text-center bg-gray-700 border-2 border-gray-700 text-white text-lg rounded-lg h-10 w-36 md:w-60 md:h-16 md:text-2xl font-bold hp hover:bg-white hover:text-gray-700 trans">
                     </div>
 
 
@@ -133,6 +138,7 @@ EventCalendar
                     </div>
                     <!-- each events -->
                     {% for i in events %}
+                    {% if i.year == yi and i.month == mi %}
                     <div>
                         <br>
                         <div class="border-t-2 border-gray-700 mx-6 opacity-30 md:mx-72"></div>
@@ -161,6 +167,7 @@ EventCalendar
 
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
 
 
@@ -213,7 +220,7 @@ EventCalendar
             </div>
 
             <!-- allview -->
-            <div class="mt-12 px-12 sm:px-40 md:px-64 lg:px-96 " id="all-view">
+            <div class="mt-12 px-12 sm:px-40 md:px-64 lg:px-96 hidden" id="all-view">
                 <div class="grid place-content-center"> <div class="bg-gray-700 text-white rounded-lg p-3 hp border-2 border-gray-700 hover:bg-white hover:text-gray-700 trans text-center font-semibold text-lg w-full px-10" id="fil" onclick="filter()">Filter</div></div><br>
                 <div class="hidden text-center" id="form">
                     <form action="filter" method="post">

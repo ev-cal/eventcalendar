@@ -7,7 +7,7 @@ class event(models.Model):
     decs=models.TextField(null=True)
     day=models.PositiveIntegerField()
     month=models.PositiveIntegerField()
-    year=models.PositiveIntegerField()
+    year=models.CharField(max_length=4)
     venue=models.CharField(max_length=50)
     time=models.CharField(max_length=10)
     date=models.DateField()
