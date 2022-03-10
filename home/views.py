@@ -65,5 +65,6 @@ def filter(request):
         fs=datetime.datetime.strptime(start, "%Y-%m-%d").date()
         fe=datetime.datetime.strptime(end, "%Y-%m-%d").date()
     return render(request,"allevents.html",{'all':obj,'fs':fs,'fe':fe})
-
+def heroku(request):
+    return render(request,"about.html")
 

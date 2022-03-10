@@ -19,7 +19,7 @@ from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.main,name="main"),
+    path('',views.heroku,name="main"),
     path('about',views.about,name="about"),
     path('feedback',views.feedback,name="feedback"),
     path('eventdetails/<int:eventid>',views.eventdetails,name="eventdetails"),
