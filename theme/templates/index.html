@@ -14,16 +14,18 @@ EventCalendar
                 </div>
                 {% if user.is_authenticated %}
                 <!-- reg log -->
-                <div class="flex gap-3 items-center">
-                    <a href=""><div class="text-white font-bold text-lg">Hi,{{user.first_name}}</div></a> 
-                    <a href="accounts/logout"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700">Logout</div></a>
+                <div class="flex gap-4">
+                    <a href=""><div class="text-white font-bold text-lg flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg>{{user.first_name}}</div></a> 
+                    <a href="accounts/logout"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Logout</div></a>
                 </div>
                 <!-- end reg log -->
                 {% else %}
                 <!-- reg log -->
-                <div class="flex gap-3 items-center">
-                    <a href="accounts/register"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700">Register</div></a> 
-                    <a href="accounts/login"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700">Login</div></a>
+                <div class="flex gap-3">
+                    <a href="accounts/register"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Register</div></a> 
+                    <a href="accounts/login"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Login</div></a>
                 </div>
                 <!-- end reg log -->
                 {% endif %}
