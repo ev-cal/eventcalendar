@@ -11,6 +11,21 @@ All Events
             <div class="transform hover:scale-105">
                 <a class="text-white text-lg md:ml-32 md:text-2xl font-bold" href="/">Event Calendar</a>
             </div>
+            {% if user.is_authenticated %}
+                <!-- reg log -->
+                <div class="flex gap-3 items-center">
+                    <a href=""><div class="text-white font-bold text-lg">Hi,{{user.first_name}}</div></a> 
+                    <a href="accounts/logout"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700">Logout</div></a>
+                </div>
+                <!-- end reg log -->
+                {% else %}
+                <!-- reg log -->
+                <div class="flex gap-3 items-center">
+                    <a href="accounts/register"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700">Register</div></a> 
+                    <a href="accounts/login"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700">Login</div></a>
+                </div>
+                <!-- end reg log -->
+                {% endif %}
             <nav class="">
                 <svg id="burger" xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6 text-white md:hidden hover:cursor-pointer" fill="none" viewBox="0 0 24 24"
@@ -103,10 +118,14 @@ All Events
             <div class="p-4">
                 <label for="" class="text-lg font-bold">Navigate</label>
                 <div class="mt-2 text-sm">
-                    <a href="" class="opacity-70 hover:opacity-100">About</a><br>
-                    <a href="" class="opacity-70 hover:opacity-100">Feedback</a><br>
-                    <a href="" class="opacity-70 hover:opacity-100">Register</a><br>
-                    <a href="" class="opacity-70 hover:opacity-100">Login</a>
+                    <a href="about" class="opacity-70 hover:opacity-100">About</a><br>
+                    <a href="feedback" class="opacity-70 hover:opacity-100">Feedback</a><br>
+                    {% if user.is_authenticated %}
+                    <a href="accounts/logout" class="opacity-70 hover:opacity-100">Logout</a>
+                    {% else %}
+                    <a href="accounts/register" class="opacity-70 hover:opacity-100">Register</a><br>
+                    <a href="accounts/login" class="opacity-70 hover:opacity-100">Login</a>
+                    {% endif %}
                 </div>
             </div>
 
