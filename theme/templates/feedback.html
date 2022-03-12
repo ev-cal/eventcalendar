@@ -38,13 +38,14 @@ Feedback
         <div class="lg:mx-36">
             <h1 class="text-gray-700 text-3xl mt-28 text-center font-bold">Feedback</h1>
         <div class="mt-12 bg-gray-700 text-white px-10 py-14 mx-2 rounded-lg md:rounded-2xl lg:mx-96">
-            <form action="">
+            <form action="feedback" method="post">
+                {% csrf_token %}
                 <label for="" class="font-bold">Name</label><br>
-                <input type="text" placeholder="Enter Your Name" class="text-black w-full rounded-md"><br><br>
+                <input type="text" placeholder="Enter Your Name" class="text-black w-full rounded-md" name="name"><br><br>
                 <label for="" class="font-bold">Email</label><br>
-                <input type="email" placeholder="Enter Your Email" class="text-black w-full rounded-md"><br><br>
+                <input type="email" placeholder="Enter Your Email" class="text-black w-full rounded-md" name="email"><br><br>
                 <label for="" class="font-bold">Message</label><br>
-                <textarea name="" id="" cols="30" rows="5" placeholder="Enter Your Message" class="text-black w-full rounded-md" maxlength="100"></textarea><br><br>
+                <textarea name="message" id="" cols="30" rows="5" placeholder="Enter Your Message" class="text-black w-full rounded-md" maxlength="100"></textarea><br><br>
                 <input type="submit" value="Send Message" class="bg-gray-700 text-white rounded-md w-1/2 h-10  font-bold text-lg border-white hp border-2 hover:border-gray-700 hover:bg-white hover:text-gray-700 trans">
 
             </form>

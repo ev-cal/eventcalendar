@@ -4,6 +4,7 @@ EventCalendar
 {% endblock title %}
 
 {% block content %}
+
 <body>
     <div>
         <div class="w-full fixed top-0 z-40">
@@ -81,7 +82,7 @@ EventCalendar
                             type="number" id="year" name="year_input">
 
                         <!-- Next -->
-                        <div onclick="next_year()" 
+                        <div onclick="next_year()"
                             class="w-auto px-2 trans border-2 border-gray-700 bg-gray-700 text-white hover:bg-white hover:text-gray-700 rounded-lg text-center hover:cursor-pointer md:h-16 md:w-20">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-10 md:w-10 md:my-2 md:mx-2"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -118,12 +119,13 @@ EventCalendar
                                     d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                             </svg>
                         </div>
-                   
+
 
                     </div>
 
                     <div class="flex mt-8 justify-center md:mx-36 gap-1">
-                        <input type="submit" value="View" class="text-center bg-gray-700 border-2 border-gray-700 text-white text-lg rounded-lg h-10 w-36 md:w-60 md:h-16 md:text-2xl font-bold hp hover:bg-white hover:text-gray-700 trans">
+                        <input type="submit" value="View"
+                            class="text-center bg-gray-700 border-2 border-gray-700 text-white text-lg rounded-lg h-10 w-36 md:w-60 md:h-16 md:text-2xl font-bold hp hover:bg-white hover:text-gray-700 trans">
                     </div>
 
 
@@ -179,66 +181,82 @@ EventCalendar
                 <!--Daily view-->
                 <form action="">
                     <div class="bg-gray-700 text-white rounded-lg pb-2 lg:p-8 lg:rounded-2xl">
-                        
+
                         <div class="flex justify-center gap-3 p-3 font-semibold text-lg md:text-2xl">
                             <div>
                                 <label for="" class="text-xl md:text-3xl">{{ft}}</label>
                             </div>
                         </div>
                     </div>
-                        {% for j in events %}
-                        <!--content-->
-                        {% if j.date == t %}
-                        <div class="bg-gray-700 text-white rounded-lg p-4 lg:p-8 lg:rounded-2xl mt-3">
+                    {% for j in events %}
+                    <!--content-->
+                    {% if j.date == t %}
+                    <div class="bg-gray-700 text-white rounded-lg p-4 lg:p-8 lg:rounded-2xl mt-3">
                         <div class="p-8 m-5 border-2 border-white rounded-lg">
-                            <div class="text-center"><label for="" class="font-bold text-lg md:text-2xl">{{j.name}}</label></div>
+                            <div class="text-center"><label for=""
+                                    class="font-bold text-lg md:text-2xl">{{j.name}}</label></div>
                             <br>
                             <div class="">
-                            <div class="mt-3"><label for="" class="text-lg md:text-xl">{{j.decs}}</label></div>
-                            <div class="mt-3"><label for="" class="text-lg md:text-xl">Venue : {{j.venue}}</label></div>
-                            <div class="mt-3"><label for="" class="text-lg md:text-xl">Time : {{j.time}}</label></div>
+                                <div class="mt-3"><label for="" class="text-lg md:text-xl">{{j.decs}}</label></div>
+                                <div class="mt-3"><label for="" class="text-lg md:text-xl">Venue : {{j.venue}}</label>
+                                </div>
+                                <div class="mt-3"><label for="" class="text-lg md:text-xl">Time : {{j.time}}</label>
+                                </div>
                             </div>
-                              <div class="mt-6 text-center w-full"><a href="{{j.weblink}}" class=""><div class="bg-gray-700 text-white border-2 border-white rounded-lg hover:bg-white hover:text-gray-700 trans hover:border-gray-700 text-xl h-12 p-2">Register</div></a></div>
+                            <div class="mt-6 text-center w-full"><a href="{{j.weblink}}" class="">
+                                    <div
+                                        class="bg-gray-700 text-white border-2 border-white rounded-lg hover:bg-white hover:text-gray-700 trans hover:border-gray-700 text-xl h-12 p-2">
+                                        Register</div>
+                                </a></div>
                         </div>
                     </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </form>
             </div>
+
+
             <!-- upcoming -->
             <div class="hidden mt-12 px-12 sm:px-40 md:px-64 lg:px-96" id="upcoming">
                 {% for k in events %}
                 {% if k.date > t %}
-                <a href="eventdetails/{{k.id}}"><div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
-                    <label class=" font-bold text-lg hp">{{k.date}}</label><br><br>
-                    <label class=" font-semibold text-lg hp">{{k.name}}</label>
-                </div>
-            </a>
+                <a href="eventdetails/{{k.id}}">
+                    <div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
+                        <label class=" font-bold text-lg hp">{{k.date}}</label><br><br>
+                        <label class=" font-semibold text-lg hp">{{k.name}}</label>
+                    </div>
+                </a>
                 {% endif %}
                 {% endfor %}
             </div>
 
             <!-- allview -->
             <div class="mt-12 px-12 sm:px-40 md:px-64 lg:px-96 hidden" id="all-view">
-                <div class="grid place-content-center"> <div class="bg-gray-700 text-white rounded-lg p-3 hp border-2 border-gray-700 hover:bg-white hover:text-gray-700 trans text-center font-semibold text-lg w-full px-10" id="fil" onclick="filter()">Filter</div></div><br>
+                <div class="grid place-content-center">
+                    <div class="bg-gray-700 text-white rounded-lg p-3 hp border-2 border-gray-700 hover:bg-white hover:text-gray-700 trans text-center font-semibold text-lg w-full px-10"
+                        id="fil" onclick="filter()">Filter</div>
+                </div><br>
                 <div class="hidden text-center" id="form">
                     <form action="filter" method="post">
                         {% csrf_token %}
                         <label for="" class="text-lg text-gray-700 font-semibold">From</label><br>
-                        <input type="date" placeholder="enter date" class="border-2 border-gray-700 rounded-lg mt-2" name="start" required><br><br>
+                        <input type="date" placeholder="enter date" class="border-2 border-gray-700 rounded-lg mt-2"
+                            name="start" required><br><br>
                         <label for="" class="text-lg text-gray-700 font-semibold"> To</label><br>
-                        <input type="date" placeholder="enter date" class="border-2 border-gray-700 rounded-lg mt-2" name="end" required><br>
-                        <input type="submit" value="Submit" class="border-2 border-gray-700 rounded-lg mt-2 bg-gray-700 text-white p-2 hp hover:bg-white hover:text-gray-700 trans font-semibold">
+                        <input type="date" placeholder="enter date" class="border-2 border-gray-700 rounded-lg mt-2"
+                            name="end" required><br>
+                        <input type="submit" value="Submit"
+                            class="border-2 border-gray-700 rounded-lg mt-2 bg-gray-700 text-white p-2 hp hover:bg-white hover:text-gray-700 trans font-semibold">
                     </form>
                 </div>
                 <br>
                 {% for a in events %}
-                <a href="eventdetails/{{a.id}}"><div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
-                    <label class=" font-bold text-lg hp">{{a.date}}</label><br><br>
-                    <label class=" font-semibold text-lg hp">{{a.name}}</label>
-                </div>
-            </a>
+                <a href="eventdetails/{{a.id}}">
+                    <div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
+                        <label class=" font-bold text-lg hp">{{a.date}}</label><br><br>
+                        <label class=" font-semibold text-lg hp">{{a.name}}</label>
+                    </div>
+                </a>
                 {% endfor %}
 
             </div>

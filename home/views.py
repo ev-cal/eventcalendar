@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from . models import event
+from django.shortcuts import render,redirect
+from . models import event, feedback as fbc
 import datetime
 
 def main(request):
@@ -50,6 +50,13 @@ def about(request):
     year=tod.year
     return render(request,"about.html",{'y':year})
 def feedback(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        text=request.POST['message']
+        fb=fbc(name=name,email=email,message=text)
+        fb.save()
+        return redirect('/')
     tod=datetime.date.today()
     year=tod.year
     return render(request,"feedback.html",{'y':year})
