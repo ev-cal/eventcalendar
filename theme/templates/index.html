@@ -35,7 +35,10 @@ EventCalendar
                 </nav>
             </div>
         </div>
+
+
         <div class="flex gap-2 sm:gap-3 justify-center mt-40 px-4 mx-2 md:mx-36 ">
+             
             <!--view buttons -->
             <div class="md:p-4 p-2 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700 text-md text-white w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-white hover:text-gray-700"
                 onclick="allClick()">
@@ -314,8 +317,13 @@ EventCalendar
                     <div class="mt-2 text-sm">
                         <a href="" class="opacity-70 hover:opacity-100">About</a><br>
                         <a href="" class="opacity-70 hover:opacity-100">Feedback</a><br>
-                        <a href="" class="opacity-70 hover:opacity-100">Search</a><br>
-                        <a href="" class="opacity-70 hover:opacity-100">Signup/Login</a>
+                        {% if user.is_authenticated %}
+                        <a href="accounts/register" class="opacity-70 hover:opacity-100">{{user.username}}</a><br>
+                        <a href="accounts/logout" class="opacity-70 hover:opacity-100">Logout</a>
+                        {% else %}
+                        <a href="accounts/register" class="opacity-70 hover:opacity-100">Register</a><br>
+                        <a href="accounts/login" class="opacity-70 hover:opacity-100">Login</a>
+                        {% endif %}
                     </div>
                 </div>
 

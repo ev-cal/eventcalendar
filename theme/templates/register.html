@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}
-Feedback
+Register
 {% endblock title %}
 
 {% block content %}
-
 <body>
     <div>
         <div class="w-full fixed top-0 z-40">
@@ -25,10 +24,10 @@ Feedback
                                 <div class="transform hover:scale-110"><a href="/">Home</a></div>
                             </li>
                             <li>
-                                <div class="transform hover:scale-110"><a href="about">About</a></div>
+                                <div class="transform hover:scale-110"><a href="/about">About</a></div>
                             </li>
                             <li>
-                                <div class="transform hover:scale-110"><a href="feedback">Feedback</a></div>
+                                <div class="transform hover:scale-110"><a href="/feedback">Feedback</a></div>
                             </li>
                         </ul>
                     </div>
@@ -36,17 +35,24 @@ Feedback
             </div>
         </div>
         <div class="lg:mx-36">
-            <h1 class="text-gray-700 text-3xl mt-28 text-center font-bold">Feedback</h1>
-        <div class="mt-12 bg-gray-700 text-white px-10 py-14 mx-2 rounded-lg md:rounded-2xl lg:mx-96">
-            <form action="feedback" method="post">
+            <h1 class="text-gray-700 text-3xl mt-28 text-center font-bold">Create New Account</h1>
+        <div class="mt-12 bg-gray-700  px-10 py-14 mx-2 rounded-lg md:rounded-2xl lg:mx-96">
+            <form action="register" method="post">
                 {% csrf_token %}
-                <label for="" class="font-bold">Name</label><br>
-                <input type="text" placeholder="Enter Your Name" class="text-black w-full rounded-md" name="name"><br><br>
-                <label for="" class="font-bold">Email</label><br>
-                <input type="email" placeholder="Enter Your Email" class="text-black w-full rounded-md" name="email"><br><br>
-                <label for="" class="font-bold">Message</label><br>
-                <textarea name="message" id="" cols="30" rows="5" placeholder="Enter Your Message" class="text-black w-full rounded-md" maxlength="100"></textarea><br><br>
-                <input type="submit" value="Send Message" class="bg-gray-700 text-white rounded-md w-1/2 h-10  font-bold text-lg border-white hp border-2 hover:border-gray-700 hover:bg-white hover:text-gray-700 trans">
+                <label for="" class="font-bold text-white">Nickname</label><br>
+                <input required type="text" placeholder="Enter Your Nickname" class="text-black w-full rounded-md" name="nickname"><br><br>
+                <label for="" class="font-bold text-white">Username</label><br>
+                <input required type="text" placeholder="Enter Your Username" class="text-black w-full rounded-md" name="username"><br><br>
+                <label for="" class="font-bold text-white">Email</label><br>
+                <input required type="email" placeholder="Enter Your Email" class="text-black w-full rounded-md" name="email"><br><br>
+                <label for="" class="font-bold text-white">New Password</label><br>
+                <input required type="password" placeholder="Enter Your password" class="text-black w-full rounded-md" name="password1"><br><br>
+                <label for="" class="font-bold text-white">Confirm Password</label><br>
+                <input required type="password" placeholder="Re-Enter Your Password" class="text-black w-full rounded-md" name="password2"><br><br>
+                {% for m in messages %}
+                <label class="text-red-500 text-sm font-semibold" for="">{{m}}</label><br><br>
+                {% endfor %}
+                <input type="submit" value="Register" class="bg-gray-700 text-white rounded-md w-1/2 h-10  font-bold text-lg border-white hp border-2 hover:border-gray-700 hover:bg-white hover:text-gray-700 trans">
 
             </form>
         </div>
@@ -100,8 +106,8 @@ Feedback
                 <div class="mt-2 text-sm">
                     <a href="" class="opacity-70 hover:opacity-100">About</a><br>
                     <a href="" class="opacity-70 hover:opacity-100">Feedback</a><br>
-                    <a href="" class="opacity-70 hover:opacity-100">Register</a><br>
-                    <a href="" class="opacity-70 hover:opacity-100">Login</a>
+                    <a href="accounts/register" class="opacity-70 hover:opacity-100">Register</a><br>
+                    <a href="accounts/login" class="opacity-70 hover:opacity-100">Login</a>
                 </div>
             </div>
             
