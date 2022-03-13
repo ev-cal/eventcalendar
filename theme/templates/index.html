@@ -15,17 +15,33 @@ EventCalendar
                 {% if user.is_authenticated %}
                 <!-- reg log -->
                 <div class="flex gap-4">
-                    <a href=""><div class="text-white font-bold text-lg flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                      </svg>{{user.first_name}}</div></a> 
-                    <a href="accounts/logout"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Logout</div></a>
+                    <a href="">
+                        <div class="text-white font-bold text-lg flex gap-1 items-center"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            </svg>{{user.first_name}}</div>
+                    </a>
+                    <a href="accounts/logout">
+                        <div
+                            class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">
+                            Logout</div>
+                    </a>
                 </div>
                 <!-- end reg log -->
                 {% else %}
                 <!-- reg log -->
                 <div class="flex gap-3">
-                    <a href="accounts/register"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Register</div></a> 
-                    <a href="accounts/login"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Login</div></a>
+                    <a href="accounts/register">
+                        <div
+                            class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">
+                            Register</div>
+                    </a>
+                    <a href="accounts/login">
+                        <div
+                            class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">
+                            Login</div>
+                    </a>
                 </div>
                 <!-- end reg log -->
                 {% endif %}
@@ -55,7 +71,7 @@ EventCalendar
 
 
         <div class="flex gap-2 sm:gap-3 justify-center mt-40 px-4 mx-2 md:mx-36 ">
-             
+
             <!--view buttons -->
             <div class="md:p-4 p-2 trans border-4 rounded-lg md:rounded-3xl bg-gray-700 border-gray-700 text-md text-white w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-white hover:text-gray-700"
                 onclick="allClick()">
@@ -178,10 +194,12 @@ EventCalendar
                                 </div>
                                 <div class="w-full">
                                     <!-- Event 1 -->
-                                    <div
-                                        class="bg-gray-700 border-gray-700 border-2 rounded-lg p-4 font-bold text-white text-xl h-32 flex items-center">
-                                        <a href="eventdetails/{{i.id}}">{{i.name}}</a>
-                                    </div>
+                                    <a href="eventdetails/{{i.id}}">
+                                        <div
+                                            class="bg-gray-700  rounded-lg p-4 font-bold text-white text-xl h-32 flex items-center trans border-2 border-gray-700 hover:bg-white hover:text-gray-700">
+                                            {{i.name}}
+                                        </div>
+                                    </a>
                                 </div>
 
                             </div>
@@ -217,13 +235,16 @@ EventCalendar
                                     class="font-bold text-lg md:text-2xl">{{j.name}}</label></div>
                             <br>
                             <div class="">
-                                <div class="mt-3"><label for="" class="text-lg md:text-xl">{{j.decs}}</label></div>
-                                <div class="mt-3"><label for="" class="text-lg md:text-xl">Venue : {{j.venue}}</label>
+                                <div class="mt-3 border-2 border-white rounded-lg p-2 font-semibold"><label for=""
+                                        class="text-md md:text-lg">{{j.decs}}</label></div>
+                                <div class="mt-3 border-2 border-white rounded-lg p-2 font-semibold"><label for=""
+                                        class="text-lg md:text-xl">Venue : {{j.venue}}</label>
                                 </div>
-                                <div class="mt-3"><label for="" class="text-lg md:text-xl">Time : {{j.time}}</label>
+                                <div class="mt-3 border-2 border-white rounded-lg p-2 font-semibold"><label for=""
+                                        class="text-lg md:text-xl">Time : {{j.time}}</label>
                                 </div>
                             </div>
-                            <div class="mt-6 text-center w-full"><a href="{{j.weblink}}" class="">
+                            <div class="mt-6 text-center w-full font-semibold"><a href="{{j.weblink}}" class="">
                                     <div
                                         class="bg-gray-700 text-white border-2 border-white rounded-lg hover:bg-white hover:text-gray-700 trans hover:border-gray-700 text-xl h-12 p-2">
                                         Register</div>
@@ -241,9 +262,10 @@ EventCalendar
                 {% for k in events %}
                 {% if k.date > t %}
                 <a href="eventdetails/{{k.id}}">
-                    <div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
-                        <label class=" font-bold text-lg hp">{{k.date}}</label><br><br>
-                        <label class=" font-semibold text-lg hp">{{k.name}}</label>
+                    <div
+                        class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl trans border-2 border-gray-700 hover:bg-white hover:text-gray-700">
+                        <label class=" font-semibold text-lg hp">{{k.date}}</label><br><br>
+                        <label class=" font-bold text-lg hp">{{k.name}}</label>
                     </div>
                 </a>
                 {% endif %}
@@ -272,9 +294,10 @@ EventCalendar
                 <br>
                 {% for a in events %}
                 <a href="eventdetails/{{a.id}}">
-                    <div class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl">
-                        <label class=" font-bold text-lg hp">{{a.date}}</label><br><br>
-                        <label class=" font-semibold text-lg hp">{{a.name}}</label>
+                    <div
+                        class="bg-gray-700 text-white p-3  rounded-lg w-full text-center mt-6 lg:rounded-2xl trans border-2 border-gray-700 hover:bg-white hover:text-gray-700">
+                        <label class=" font-semibold text-lg hp">{{a.date}}</label><br><br>
+                        <label class=" font-bold text-lg hp">{{a.name}}</label>
                     </div>
                 </a>
                 {% endfor %}
