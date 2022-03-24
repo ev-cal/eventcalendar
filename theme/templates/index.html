@@ -16,7 +16,7 @@ EventCalendar
                 <!-- reg log -->
                 <div class="flex gap-4">
                     <a href="">
-                        <div class="text-white font-bold text-lg flex gap-1 items-center"><svg
+                        <div class="font-bold text-lg flex gap-1 items-center"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-person-fill" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -24,22 +24,17 @@ EventCalendar
                     </a>
                     <a href="accounts/logout">
                         <div
-                            class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">
+                            class="border-2 rounded-lg border-black font-semibold px-2 h-7 hover:text-white trans hover:bg-black mt-1">
                             Logout</div>
                     </a>
                 </div>
                 <!-- end reg log -->
                 {% else %}
                 <!-- reg log -->
-                <div class="flex gap-3">
-                    <a href="accounts/register">
-                        <div
-                            class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">
-                            Register</div>
-                    </a>
+                <div class="flex">
                     <a href="accounts/login">
                         <div
-                            class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">
+                            class="border-2 rounded-lg border-black font-semibold px-2 h-7 hover:text-white trans hover:bg-black mt-1">
                             Login</div>
                     </a>
                 </div>
@@ -73,20 +68,20 @@ EventCalendar
         <div class="flex gap-2 sm:gap-3 justify-center mt-40 px-4 mx-2 md:mx-36 ">
 
             <!--view buttons -->
-            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md  w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-gray-100  hover:shadow-sm"
+            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md  w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-gray-100 transform hover:scale-95"
                 onclick="allClick()">
                 <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">All Events</h1>
             </div>
 
-            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md w-24 md:w-1/4 text-center  md:h-24 hover:cursor-pointer hover:bg-gray-100  hover:shadow-sm"
+            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md w-24 md:w-1/4 text-center  md:h-24 hover:cursor-pointer hover:bg-gray-100 transform hover:scale-95"
                 onclick="upcomingView()">
                 <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">Upcoming Events</h1>
             </div>
-            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md  w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-gray-100  hover:shadow-sm"
+            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md  w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-gray-100 transform hover:scale-95"
                 onclick="monthClick()">
                 <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">Monthly View</h1>
             </div>
-            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md  w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-gray-100  hover:shadow-sm"
+            <div class="md:p-4 p-2 trans shadow-md shadow-neutral-400 rounded-lg md:rounded-3xl bg-white text-md  w-24 md:w-1/4 text-center md:h-24 hover:cursor-pointer hover:bg-gray-100 transform hover:scale-95"
                 onclick="dailyClick()">
                 <h1 class="lg:text-xl md:mt-2 font-bold xl:text-2xl">Today's Events</h1>
             </div>
@@ -114,7 +109,7 @@ EventCalendar
                         </div>
 
                         <input value="{{fy}}"
-                            class="w-36 h-10 border-2 border-black bg-white text-black rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl font-bold"
+                            class="w-36 h-10 border-2 border-black bg-black text-white rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl font-bold"
                             type="number" id="year" name="year_input">
 
                         <!-- Next -->
@@ -144,7 +139,7 @@ EventCalendar
                         <div class="">
                             <!-- Month -->
                             <input type="text" id="month" name="month_input" value="{{fm}}"
-                                class="w-36 h-10 border-2 border-black bg-white text-black rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl font-bold">
+                                class="w-36 h-10 border-2 border-black bg-black text-white rounded-lg text-center pointer-events-none text-lg md:h-16 md:w-60 md:text-2xl font-bold">
                         </div>
                         <div onclick="next_month()"
                             class="w-auto px-2 trans border-2 border-black bg-black text-white hover:bg-white hover:text-black rounded-lg text-center hover:cursor-pointer md:h-16 md:w-20">
@@ -166,6 +161,7 @@ EventCalendar
 
 
                     <!-- titles -->
+                    <div>
                     <div class="flex mt-16 px-8 md:mx-72">
                         <div class="text-2xl font-bold md:text-4xl">
                             <label for="">Day</label>
@@ -176,6 +172,7 @@ EventCalendar
                     </div>
                     <br>
                     <div class="border-t-2 border-black mx-6 opacity-30 md:mx-72"></div>
+                    </div>
 
                     <!-- each events -->
                     {% for i in events %}
@@ -312,7 +309,7 @@ EventCalendar
 
 
 
-        <div class="mt-16 border-y-2 border-black">
+        <div class="mt-16" style="box-shadow: 0px -1px 5px rgba(50, 50, 50, 0.75);">
             <!-- footer-->
             <div class="grid md:grid-cols-3 md:gap-24">
                 <div class="p-4">

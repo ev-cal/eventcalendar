@@ -6,35 +6,46 @@ Event Deatails
 {% block content %}
 <body>
     <div class="w-full fixed top-0 z-40">
-        <div class="bg-gray-700 flex justify-between py-4 h-auto p-2 shadow-gray-600 shadow-md md:py-6">
+        <div class="bg-white flex justify-between py-4 h-auto p-2 shadow-neutral-400 shadow-md md:py-6">
             <div class="transform hover:scale-105">
-                <a class="text-white text-lg md:ml-32 md:text-2xl font-bold" href="/">Event Calendar</a>
+                <a class="text-lg md:ml-32 md:text-2xl font-bold" href="/">Event Calendar</a>
             </div>
             {% if user.is_authenticated %}
             <!-- reg log -->
             <div class="flex gap-4">
-                <a href=""><div class="text-white font-bold text-lg flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                  </svg>{{user.first_name}}</div></a> 
-                <a href="accounts/logout"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Logout</div></a>
+                <a href="">
+                    <div class="font-bold text-lg flex gap-1 items-center"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>{{user.first_name}}</div>
+                </a>
+                <a href="accounts/logout">
+                    <div
+                        class="border-2 rounded-lg border-black font-semibold px-2 h-7 hover:text-white trans hover:bg-black mt-1">
+                        Logout</div>
+                </a>
             </div>
             <!-- end reg log -->
             {% else %}
             <!-- reg log -->
-            <div class="flex gap-3">
-                <a href="accounts/register"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Register</div></a> 
-                <a href="accounts/login"><div class="text-white border-2 rounded-lg border-white text-sm px-2 h-6 hover:text-gray-700 trans hover:bg-white hover:border-gray-700 mt-1">Login</div></a>
+            <div class="flex">
+                <a href="accounts/login">
+                    <div
+                        class="border-2 rounded-lg border-black font-semibold px-2 h-7 hover:text-white trans hover:bg-black mt-1">
+                        Login</div>
+                </a>
             </div>
             <!-- end reg log -->
             {% endif %}
             <nav class="">
                 <svg id="burger" xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-white md:hidden hover:cursor-pointer" fill="none" viewBox="0 0 24 24"
+                    class="h-6 w-6 md:hidden hover:cursor-pointer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                <div id="menu" class="text-white hidden md:block font-bold">
+                <div id="menu" class="hidden md:block font-bold">
                     <ul class="md:flex md:gap-3 md:mr-32 md:text-lg">
                         <li>
                             <div class="transform hover:scale-110"><a href="/">Home</a></div>
@@ -50,24 +61,24 @@ Event Deatails
             </nav>
         </div>
     </div>
-    
+
     <div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80 ">
-        <div class="text-center text-gray-700 text-3xl font-bold mt-24 md:mt-28 lg:mt-32 xl:mt-32">Event details</div>
-        <div class="bg-gray-700 text-white p-6 md:p-8 lg:p-12 rounded-2xl border-1 mt-12">
+        <div class="text-center text-black text-3xl font-bold mt-24 md:mt-28 lg:mt-32 xl:mt-32">Event details</div>
+        <div class="p-6 md:p-8 lg:p-12 rounded-2xl shadow-md shadow-neutral-400 mt-12">
             <div class="border-2 border-white p-6 md:p-8 lg:p-12 rounded-lg">
-            <div class="text-center"><label for="" class="font-bold text-xl md:text-2xl">{{dts.name}}</label></div>
+            <div class="text-center shadow-neutral-400 shadow-md rounded-lg py-4 px-2"><label for="" class="font-bold text-xl md:text-2xl">{{dts.name}}</label></div>
             <br>
             <div class="">
             <div class="mt-3 border-2 border-white p-2 rounded-lg"><label for="" class="text-md md:text-lg font-semibold ">{{dts.decs}}</label></div>
             <div class="mt-3 border-2 border-white p-2 rounded-lg"><label for="" class="text-lg md:text-xl font-semibold ">Venue : {{dts.venue}}</label></div>
             <div class="mt-3 border-2 border-white p-2 rounded-lg"><label for="" class="text-lg md:text-xl font-semibold ">Time : {{dts.time}}</label></div>
             </div>
-            <div class="mt-6 text-center w-full font-semibold"><a href="{{dts.weblink}}" class=""><div class="bg-gray-700 text-white border-2 border-white rounded-lg hover:bg-white hover:text-gray-700 trans hover:border-gray-700 text-xl h-12 p-2">Register</div></a></div>
+            <div class="mt-6 text-center w-full font-semibold"><a href="{{dts.weblink}}" class=""><div class="bg-black text-white border-2 border-black rounded-lg hover:bg-white hover:text-black trans text-xl h-12 p-2">Register</div></a></div>
         </div>
     </div>
     </div>
 
-    <div class="bg-gray-700 text-white mt-16">
+    <div class="mt-16" style="box-shadow: 0px -1px 5px rgba(50, 50, 50, 0.75);">
         <!-- footer-->
         <div class="grid md:grid-cols-3 md:gap-24">
             <div class="p-4">
@@ -132,6 +143,6 @@ Event Deatails
         </div>
 
     </div>
-
+    <!--footer end-->
 </body>
 {% endblock %}

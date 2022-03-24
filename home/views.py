@@ -41,7 +41,6 @@ def main(request):
         yi=year_input
         formattedmonth=month_input
         formattedyear=int(yi)
-        print(type(formattedyear))
         return render(request,"index.html",{'events':obj,'d':day,'m':month,'y':year,'t':tod,'ft':formattedtod,'mi':mi,'yi':yi,'fm':formattedmonth,'fy':formattedyear})
 
     return render(request,"index.html",{'events':obj,'d':day,'m':month,'y':year,'t':tod,'ft':formattedtod,'fm':formattedmonth,'fy':formattedyear})
