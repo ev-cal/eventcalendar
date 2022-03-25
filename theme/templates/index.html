@@ -2,7 +2,7 @@
 {% block title %}
 EventCalendar
 {% endblock title %}
-
+{% load static %}
 {% block content %}
 
 <body>
@@ -225,6 +225,7 @@ EventCalendar
                             </div>
                         </div>
                     </div>
+                    {% if user.is_authenticated %}
                     {% for j in events %}
                     <!--content-->
                     {% if j.date == t %}
@@ -253,6 +254,23 @@ EventCalendar
                     <br>
                     {% endif %}
                     {% endfor %}
+                    {% else %}
+                    <div>
+                        <div class="p-6 md:p-8 lg:p-12 rounded-2xl shadow-md shadow-neutral-400 mt-10 text-center">
+                            <h1 class="text-4xl font-bold">Sorry...!</h1>
+                            <h1 class="text-xl font-semibold mt-5">This section is only available for loggined users.</h1>
+                            <h1 class="text-lg mt-5">Please login to your account for use this section.It allows you to see the event in detail and register for that event.</h1>
+                            <h1 class="text-xl font-bold mt-5">So Hurry UP...!<br>Log on to your account.</h1>
+                            <a href="/accounts/login">
+                                <div
+                                    class="border-2 rounded-lg text-lg border-black font-semibold p-2 text-white trans bg-black mt-6 hover:text-black hover:bg-white">
+                                    Login</div>
+                            </a>
+                    
+                        </div>
+                    
+                    </div>
+                    {% endif %}
                 </form>
             </div>
 

@@ -20,7 +20,7 @@ Event Deatails
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                         </svg>{{user.first_name}}</div>
                 </a>
-                <a href="accounts/logout">
+                <a href="/accounts/logout">
                     <div
                         class="border-2 rounded-lg border-black font-semibold px-2 h-7 hover:text-white trans hover:bg-black mt-1">
                         Logout</div>
@@ -30,7 +30,7 @@ Event Deatails
             {% else %}
             <!-- reg log -->
             <div class="flex">
-                <a href="accounts/login">
+                <a href="/accounts/login">
                     <div
                         class="border-2 rounded-lg border-black font-semibold px-2 h-7 hover:text-white trans hover:bg-black mt-1">
                         Login</div>
@@ -51,10 +51,10 @@ Event Deatails
                             <div class="transform hover:scale-110"><a href="/">Home</a></div>
                         </li>
                         <li>
-                            <div class="transform hover:scale-110"><a href="about">About</a></div>
+                            <div class="transform hover:scale-110"><a href="/about">About</a></div>
                         </li>
                         <li>
-                            <div class="transform hover:scale-110"><a href="feedback">Feedback</a></div>
+                            <div class="transform hover:scale-110"><a href="/feedback">Feedback</a></div>
                         </li>
                     </ul>
                 </div>
@@ -62,6 +62,7 @@ Event Deatails
         </div>
     </div>
 
+    {% if user.is_authenticated %}
     <div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80 ">
         <div class="text-center text-black text-3xl font-bold mt-24 md:mt-28 lg:mt-32 xl:mt-32">Event details</div>
         <div class="p-6 md:p-8 lg:p-12 rounded-2xl shadow-md shadow-neutral-400 mt-12">
@@ -76,7 +77,47 @@ Event Deatails
             <div class="mt-6 text-center w-full font-semibold"><a href="{{dts.weblink}}" class=""><div class="bg-black text-white border-2 border-black rounded-lg hover:bg-white hover:text-black trans text-xl h-12 p-2">Register</div></a></div>
         </div>
     </div>
+    <div class="mt-6">
+        <div><form action="" method="post">
+            {% csrf_token %}
+            <input class="mx-1 font-semibold pointer-events-none border-none" value="{{user.first_name}}" name="name">
+            <input type="text" name="comment" placeholder="Write Your Comments Here" class="w-full rounded-lg mt-3">
+            <input type="number" value="{{dts.id}}" name="id" class="hidden">
+            <input type="submit" value="Add Comment" class="bg-black mt-3 text-white border-2 border-black hover:text-black hover:bg-white trans rounded-lg p-2 font-medium">
+        </form></div>
     </div>
+    </div>
+    
+    <!-- comments -->
+    <div class="mt-6">
+    <div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80">
+    <h1 class="font-bold text-lg">Comments</h1>
+</div>   
+    {% for i in cmt %}
+    <div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80">
+        <div class="border-t-2 mt-2"></div>
+        <h1 class="font-semibold mt-2">{{i.name}}</h1>
+        <h1 class="mt-2 font-light">{{i.text}}</h1>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80">
+    <div class="p-6 md:p-8 lg:p-12 rounded-2xl shadow-md shadow-neutral-400 mt-40 text-center">
+        <h1 class="text-4xl font-bold">Sorry...!</h1>
+        <h1 class="text-xl font-semibold mt-5">This section is only available for loggined users.</h1>
+        <h1 class="text-lg mt-5">Please login to your account for use this section.It allows you to see the event in detail and register for that event.You can also add comments about this event.</h1>
+        <h1 class="text-xl font-bold mt-5">So Hurry UP...!<br>Log on to your account.</h1>
+        <a href="/accounts/login">
+            <div
+                class="border-2 rounded-lg text-lg border-black font-semibold p-2 text-white trans bg-black mt-6 hover:text-black hover:bg-white">
+                Login</div>
+        </a>
+
+    </div>
+
+</div>
+{% endif %}    
 
     <div class="mt-16" style="box-shadow: 0px -1px 5px rgba(50, 50, 50, 0.75);">
         <!-- footer-->
@@ -125,13 +166,13 @@ Event Deatails
             <div class="p-4">
                 <label for="" class="text-lg font-bold">Navigate</label>
                 <div class="mt-2 text-sm">
-                    <a href="about" class="opacity-70 hover:opacity-100">About</a><br>
-                    <a href="feedback" class="opacity-70 hover:opacity-100">Feedback</a><br>
+                    <a href="/about" class="opacity-70 hover:opacity-100">About</a><br>
+                    <a href="/feedback" class="opacity-70 hover:opacity-100">Feedback</a><br>
                     {% if user.is_authenticated %}
-                    <a href="accounts/logout" class="opacity-70 hover:opacity-100">Logout</a>
+                    <a href="/accounts/logout" class="opacity-70 hover:opacity-100">Logout</a>
                     {% else %}
-                    <a href="accounts/register" class="opacity-70 hover:opacity-100">Register</a><br>
-                    <a href="accounts/login" class="opacity-70 hover:opacity-100">Login</a>
+                    <a href="/accounts/register" class="opacity-70 hover:opacity-100">Register</a><br>
+                    <a href="/accounts/login" class="opacity-70 hover:opacity-100">Login</a>
                     {% endif %}
                 </div>
             </div>

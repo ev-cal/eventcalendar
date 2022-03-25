@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from . models import event, feedback as fbc
+from . models import event, feedback as fbc ,comment
 import datetime
+from django.contrib.auth.models import User,auth
 
 def main(request):
     obj=event.objects.order_by('year','month','day')
@@ -61,7 +62,15 @@ def feedback(request):
     return render(request,"feedback.html",{'y':year})
 def eventdetails(request,eventid):
     obj=event.objects.get(id=eventid)
-    return render(request,"events.html",{'dts':obj})
+    obj1=comment.objects.filter(commentid=eventid)
+    if request.method=="POST":
+        name=request.POST.get('name')
+        text=request.POST.get('comment')
+        commentid1=request.POST.get('id')
+        commentid=int(commentid1)
+        cmt=comment(text=text,name=name,commentid=commentid)
+        cmt.save()
+    return render(request,"events.html",{'dts':obj,'cmt':obj1})
 def filter(request):
     obj=event.objects.order_by('year','month','day')
     tod=datetime.date.today()

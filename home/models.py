@@ -22,3 +22,10 @@ class feedback(models.Model):
 
     def __str__(self):
         return self.name
+class comment(models.Model):
+    text=models.CharField(max_length=100)
+    name=models.CharField(max_length=50)
+    commentid=models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.name

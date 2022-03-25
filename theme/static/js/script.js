@@ -226,4 +226,3 @@ function filter(){
         dateform.classList.add('hidden')
     }
 }
-
