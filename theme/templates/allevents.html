@@ -65,18 +65,19 @@ All Events
 
 <!-- content -->
 <div class="mt-36 px-12 sm:px-40 md:px-64 lg:px-96 text-center">
-    <div class="font-bold text-lg text-gray-700 pointer-events-none">
-    <div class="shadow-neutral-400 shadow-md rounded-lg p-3 mx-10 lg:mx-20">
+    <div class="font-bold text-lg text-gray-700 pointer-events-none shadow-md shadow-neutral-400 rounded-lg p-8">
+    <div class="border-2 border-black text-white bg-black rounded-lg py-3">
         {{fs}}
     </div>
-    <div>To</div>
-    <div class="shadow-neutral-400 shadow-md rounded-lg p-3 mx-10 lg:mx-20">
+    <div class="font-bold text-2xl">To</div>
+    <div class="border-2 border-black text-white bg-black rounded-lg py-3">
         {{fe}}
     </div>
     </div>
+    <div class="border-t-2 mt-8"></div>
     {% for a in all %}
     {% if a.date >= fs and a.date <= fe %}
-    <a href="eventdetails/{{a.id}}"><div class="p-3 rounded-lg w-full text-center mt-6 lg:rounded-2xl trans hover:bg-gray-100 shadow-neutral-400 shadow-md trans transform hover:scale-105">
+    <a href="eventdetails/{{a.id}}"><div class="p-3 rounded-lg w-full text-center mt-8 lg:rounded-2xl trans hover:bg-gray-100 shadow-neutral-400 shadow-md trans transform hover:scale-105">
         <label class=" font-semibold text-lg hp">{{a.date}}</label><br><br>
         <label class=" font-bold text-lg hp">{{a.name}}</label>
     </div>
