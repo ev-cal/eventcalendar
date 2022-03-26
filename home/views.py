@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from . models import event, feedback as fbc ,comment
 import datetime
 from django.contrib.auth.models import User,auth
+from django.http import HttpResponseRedirect
 
 def main(request):
     obj=event.objects.order_by('year','month','day')
@@ -80,5 +81,12 @@ def filter(request):
         fs=datetime.datetime.strptime(start, "%Y-%m-%d").date()
         fe=datetime.datetime.strptime(end, "%Y-%m-%d").date()
     return render(request,"allevents.html",{'all':obj,'fs':fs,'fe':fe})
-
+def delete(request,cmtid):
+    if request.method=="POST":
+        obj=comment.objects.get(id=cmtid)
+        obj.delete()
+        return redirect('/')
+    return render(request,'delete.html')
+def cancel(request):
+    return redirect('/')
 

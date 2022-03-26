@@ -24,6 +24,8 @@ urlpatterns = [
     path('feedback',views.feedback,name="feedback"),
     path('eventdetails/<int:eventid>',views.eventdetails,name="eventdetails"),
     path('filter',views.filter,name="filter"),
-    path('accounts/',include('accounts.urls'))
+    path('accounts/',include('accounts.urls')),
+    path('delete/<int:cmtid>',views.delete,name='delete'),
+    path('cancel',views.cancel,name="cancel")
 
 ]

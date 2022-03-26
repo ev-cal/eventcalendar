@@ -80,7 +80,7 @@ Event Deatails
     <div class="mt-6">
         <div><form action="" method="post">
             {% csrf_token %}
-            <input class="mx-1 font-semibold pointer-events-none border-none" value="{{user.first_name}}" name="name">
+            <input class="mx-1 font-semibold pointer-events-none border-none" value="{{user.username}}" name="name">
             <input type="text" name="comment" placeholder="Write Your Comments Here" class="w-full rounded-lg mt-3">
             <input type="number" value="{{dts.id}}" name="id" class="hidden">
             <input type="submit" value="Add Comment" class="bg-black mt-3 text-white border-2 border-black hover:text-black hover:bg-white trans rounded-lg p-2 font-medium">
@@ -96,7 +96,12 @@ Event Deatails
     {% for i in cmt %}
     <div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80">
         <div class="border-t-2 mt-2"></div>
+        <div class="flex justify-between">
         <h1 class="font-semibold mt-2">{{i.name}}</h1>
+        {% if i.name == user.username %}
+        <a href="/delete/{{i.id}}" class="mt-2 text-sm border-2 border-black rounded-lg px-2 bg-black text-white hover:bg-white hover:text-black trans">Delete</a>
+        {% endif %}
+    </div>
         <h1 class="mt-2 font-light">{{i.text}}</h1>
     </div>
     {% endfor %}
