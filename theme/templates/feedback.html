@@ -69,11 +69,11 @@ Feedback
             <form action="feedback" method="post">
                 {% csrf_token %}
                 <label for="" class="font-bold">Name</label><br>
-                <input type="text" placeholder="Enter Your Name" class="text-black w-full rounded-md" name="name"><br><br>
+                <input type="text" placeholder="Enter Your Name" class="text-black w-full rounded-md" name="name" required><br><br>
                 <label for="" class="font-bold">Email</label><br>
-                <input type="email" placeholder="Enter Your Email" class="text-black w-full rounded-md" name="email"><br><br>
+                <input type="email" placeholder="Enter Your Email" class="text-black w-full rounded-md" name="email" required><br><br>
                 <label for="" class="font-bold">Message</label><br>
-                <textarea name="message" id="" cols="30" rows="5" placeholder="Enter Your Message" class="text-black w-full rounded-md" maxlength="100"></textarea><br><br>
+                <textarea name="message" id="" cols="30" rows="5" placeholder="Enter Your Message" class="text-black w-full rounded-md" maxlength="100" required></textarea><br><br>
                 <input type="submit" value="Send Message" class="bg-black text-white rounded-lg w-1/2 h-10  font-bold text-lg border-black hp border-2  hover:bg-white hover:text-black trans">
 
             </form>
