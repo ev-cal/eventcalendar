@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-Delete
+Delete Event
 {% endblock title %}
 
 {% block content %}
@@ -53,10 +53,10 @@ Delete
                                 <div class="transform hover:scale-110"><a href="/">Home</a></div>
                             </li>
                             <li>
-                                <div class="transform hover:scale-110"><a href="/about">About</a></div>
+                                <div class="transform hover:scale-110"><a href="about">About</a></div>
                             </li>
                             <li>
-                                <div class="transform hover:scale-110"><a href="/feedback">Feedback</a></div>
+                                <div class="transform hover:scale-110"><a href="feedback">Feedback</a></div>
                             </li>
                         </ul>
                     </div>
@@ -66,7 +66,7 @@ Delete
 
         <div class="px-8 sm:px-14 md:px-40 lg:px-64 xl:px-80">
             <div class="p-6 md:p-8 lg:p-12 rounded-2xl shadow-md shadow-neutral-400 mt-40 text-center text-xl font-semibold">
-                <h1>Are you sure?<br>Do you want delete your comment?</h1>
+                <h1>Are you sure?<br>Do you want delete your Event?</h1>
                 <form action="" method="post">
                     {% csrf_token %}
                     <a href="/cancel" class="mt-6 border-2 border-black rounded-lg py-2 px-4 bg-white text-black hover:bg-black hover:text-white trans">Cancel</a>

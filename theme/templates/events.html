@@ -75,12 +75,19 @@ Event Deatails
             <div class="mt-3 border-2 border-white p-2 rounded-lg"><label for="" class="text-lg md:text-xl font-semibold ">Time : {{dts.time}}</label></div>
             </div>
             <div class="mt-6 text-center w-full font-semibold"><a href="{{dts.weblink}}" class=""><div class="bg-black text-white border-2 border-black rounded-lg hover:bg-white hover:text-black trans text-xl h-12 p-2">Register</div></a></div>
+            {% if dts.admin_code == user.last_name %}
+            <div class="flex mt-10 gap-3 border-t-2 justify-center pt-5 border-black">
+            <div class="text-center font-semibold"><a href="/update/{{dts.id}}"><div class="bg-black text-white border-2 border-black rounded-lg hover:bg-white hover:text-black trans text-lg px-2">Update</div></a></div>
+            <div class="text-center font-semibold"><a href="/deleteEvent/{{dts.id}}"><div class="bg-black text-white border-2 border-black rounded-lg hover:bg-white hover:text-black trans text-lg px-2">Delete</div></a></div>
+            </div>
+            <div class="mt-6 text-center font-extralight">Admin Options</div>
+            {% endif %}
         </div>
     </div>
     <div class="mt-6">
         <div><form action="" method="post">
             {% csrf_token %}
-            <input class="mx-1 font-semibold pointer-events-none border-none" value="{{user.username}}" name="name">
+            <input class="hidden" value="{{user.username}}" name="name">
             <input type="text" name="comment" placeholder="Write Your Comments Here" class="w-full rounded-lg mt-3">
             <input type="number" value="{{dts.id}}" name="id" class="hidden">
             <input type="submit" value="Add Comment" class="bg-black mt-3 text-white border-2 border-black hover:text-black hover:bg-white trans rounded-lg p-2 font-medium">

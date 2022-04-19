@@ -3,8 +3,9 @@ from django.db import models
 
 # Create your models here.
 class event(models.Model):
+    admin_code=models.CharField(max_length=4)
     name=models.CharField(max_length=50)
-    decs=models.TextField(null=True)
+    decs=models.CharField(max_length=500)
     day=models.PositiveIntegerField()
     month=models.PositiveIntegerField()
     year=models.CharField(max_length=4)

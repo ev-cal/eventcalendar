@@ -3,6 +3,7 @@ from . models import event, feedback as fbc ,comment
 import datetime
 from django.contrib.auth.models import User,auth
 from django.http import HttpResponseRedirect
+from . forms import updateform
 
 def main(request):
     obj=event.objects.order_by('year','month','day')
@@ -42,7 +43,7 @@ def main(request):
             mi=12
         yi=year_input
         formattedmonth=month_input
-        formattedyear=int(yi)
+        formattedyear=yi
         return render(request,"index.html",{'events':obj,'d':day,'m':month,'y':year,'t':tod,'ft':formattedtod,'mi':mi,'yi':yi,'fm':formattedmonth,'fy':formattedyear})
 
     return render(request,"index.html",{'events':obj,'d':day,'m':month,'y':year,'t':tod,'ft':formattedtod,'fm':formattedmonth,'fy':formattedyear})
@@ -89,4 +90,16 @@ def delete(request,cmtid):
     return render(request,'delete.html')
 def cancel(request):
     return redirect('/')
-
+def eventdelete(request,delid):
+    if request.method == "POST":
+        obj=event.objects.get(id=delid)
+        obj.delete()
+        return redirect('/')
+    return render(request,'deleteEvent.html')
+def update(request,upid):
+    obj=event.objects.get(id=upid)
+    form=updateform(request.POST or None,instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    return render (request,'update.html',{'form':form,'obj':obj})

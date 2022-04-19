@@ -184,20 +184,38 @@ EventCalendar
                             <!-- calendar body -->
                             <div id="row1" class="flex w-full gap-3 md:gap-20">
                                 <div class="">
+                                    {% if user.last_name == i.admin_code %}
+                                    <div
+                                        class="flex items-center justify-center w-20 h-32 text-4xl font-bold text-white bg-black  shadow-neutral-400 shadow-md md:w-28 rounded-lg">
+                                        <!-- day 1 -->
+                                        <label for="">{{i.day}}</label>
+
+                                    </div>
+                                    {% else %}
                                     <div
                                         class="flex items-center justify-center w-20 h-32 text-4xl font-bold shadow-neutral-400 shadow-md md:w-28 rounded-lg">
                                         <!-- day 1 -->
                                         <label for="">{{i.day}}</label>
 
                                     </div>
+
+                                    {% endif %}
+
                                 </div>
                                 <div class="w-full">
                                     <!-- Event 1 -->
                                     <a href="eventdetails/{{i.id}}">
+                                        {% if user.last_name == i.admin_code %}
                                         <div
-                                            class="rounded-lg p-4 font-bold text-xl h-32 flex items-center shadow-neutral-400 shadow-md trans hover:bg-gray-100 trans transform hover:scale-105">
+                                            class="rounded-lg p-4 font-bold text-xl h-32 flex items-center shadow-neutral-400 shadow-md bg-black text-white  trans trans transform hover:scale-105">
                                             {{i.name}}
                                         </div>
+                                        {% else %}
+                                        <div
+                                            class="rounded-lg p-4 font-bold text-xl h-32 flex items-center shadow-neutral-400 shadow-md trans trans transform hover:scale-105">
+                                            {{i.name}}
+                                        </div>
+                                        {% endif %}
                                     </a>
                                 </div>
 
@@ -280,11 +298,19 @@ EventCalendar
                 {% for k in events %}
                 {% if k.date > t %}
                 <a href="eventdetails/{{k.id}}">
+                    {% if user.last_name == k.admin_code %}
+                    <div
+                        class="p-3 rounded-lg w-full bg-black text-center  mt-6 lg:rounded-2xl text-white trans shadow-neutral-400 shadow-md trans transform hover:scale-105">
+                        <label class=" font-semibold text-lg hp">{{k.date}}</label><br><br>
+                        <label class=" font-bold text-lg hp">{{k.name}}</label>
+                    </div>
+                    {% else %}
                     <div
                         class="p-3 rounded-lg w-full text-center mt-6 lg:rounded-2xl trans hover:bg-gray-100 shadow-neutral-400 shadow-md trans transform hover:scale-105">
                         <label class=" font-semibold text-lg hp">{{k.date}}</label><br><br>
                         <label class=" font-bold text-lg hp">{{k.name}}</label>
                     </div>
+                    {% endif %}
                 </a>
                 {% endif %}
                 {% endfor %}
@@ -312,11 +338,19 @@ EventCalendar
                 <br>
                 {% for a in events %}
                 <a href="eventdetails/{{a.id}}">
+                    {% if user.last_name == a.admin_code %}
+                    <div
+                        class="p-3 rounded-lg w-full bg-black text-white text-center mt-6 lg:rounded-2xl trans shadow-neutral-400 shadow-md trans transform hover:scale-105">
+                        <label class=" font-semibold text-lg hp">{{a.date}}</label><br><br>
+                        <label class=" font-bold text-lg hp">{{a.name}}</label>
+                    </div>
+                    {% else %}
                     <div
                         class="p-3 rounded-lg w-full text-center mt-6 lg:rounded-2xl trans hover:bg-gray-100 shadow-neutral-400 shadow-md trans transform hover:scale-105">
                         <label class=" font-semibold text-lg hp">{{a.date}}</label><br><br>
                         <label class=" font-bold text-lg hp">{{a.name}}</label>
                     </div>
+                    {% endif %}
                 </a>
          
                 {% endfor %}
